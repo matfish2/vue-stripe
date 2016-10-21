@@ -42,7 +42,7 @@ If your are selling a single product this will do:
 </form>
 ```
 
-The `product` object should match at least the bare minimum stripe requirement. E.g:
+The `product` object should match at least the bare minimum required by Stripe. E.g:
 
 ```js
 {
@@ -54,7 +54,7 @@ The `product` object should match at least the bare minimum stripe requirement. 
 
 Additional props:
 
-*  `options` Additional options to be merged into the main configuration objwect (e.g `zipCode:true`)
+*  `options` Additional options to be merged into the main configuration object (e.g `zipCode:true`)
 *  `button` Button text. Default: 'Purchase'
 
 When selling multiple products you can either pass them all to the client (Option A) or, if you are dealing with an espescially large number of products, get the relevant product via ajax (Option B. Requires `vue-resource`>=0.9.0).
@@ -131,7 +131,7 @@ Route::get('products', function() {
 });
 ```
 
-Once the checkout form was submitted the main form will be automatically submiited.
+Once the checkout form was submitted the main form will be automatically submitted.
 The request will include the `stripeEmail` and `stripeToken` parameters, which will enable you to process the payment and redirect back.
 
 ## Events
