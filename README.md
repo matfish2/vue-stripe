@@ -13,7 +13,7 @@ npm install vue-stripe
 Require the script:
 
 ```js
-var VueStripe = require('vue-stripe');
+import VueStripe from 'vue-stripe'
 ```
 
 Regsiter the component:
@@ -59,7 +59,8 @@ Additional props:
 
 When selling multiple products you can either pass them all to the client (Option A) or, if you are dealing with an espescially large number of products, get the relevant product via ajax (Option B. Requires `vue-resource`>=0.9.0).
 
-Both options require a `product-id` prop, which references a the current product id on your instance. This would normally be a value from a select box which has a `v-model` attached to it, or a router param indiciating the current product id.
+Both options require a `product-id` prop, which references the current product id on your instance.
+This would normally be a value from a select box or a router param.
 
 Option A:
 
@@ -73,7 +74,7 @@ Option A:
 <stripe-checkout
 stripe-key="my-stripe-key"
 :products="products"
-:productId="productId"></stripe-checkout>
+:product-id="productId"></stripe-checkout>
 </form>
 ```
 
