@@ -50,7 +50,8 @@
             },
             onSuccess:{
                 type: String,
-                required: true,
+                required: false,
+                default: 'submit',
                 validator: function (value) {
                     return (value === 'submit' || value === 'broadcast')
                 }
