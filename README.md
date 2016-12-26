@@ -56,6 +56,8 @@ Additional props:
 
 *  `options` Additional options to be merged into the main configuration object (e.g `zipCode:true`)
 *  `button` Button text. Default: 'Purchase'
+*  `on-success` How to proceed once the checkout form was submitted.
+Defaults to `submit`, which submits the main form. Set to `broadcast` to handle submission by yourself.
 
 When selling multiple products you can either pass them all to the client (Option A) or, if you are dealing with an espescially large number of products, get the relevant product via ajax (Option B. Requires `vue-resource`>=0.9.0).
 
@@ -134,6 +136,7 @@ Route::get('products', function() {
 
 Once the checkout form was submitted the main form will be automatically submitted.
 The request will include the `stripeEmail` and `stripeToken` parameters, which will enable you to process the payment and redirect back.
+If you wish to handle submission by yourself set the `on-success` prop to `broadcast`.
 
 ## Events
 
@@ -147,3 +150,4 @@ bus.$on('vue-stripe.error', function(e) {
 
 * `vue-stripe.not-found` Fires off when the selected product was not found
 * `vue-stripe.error` Fires off when an invalid response was returned from the server using the `products-url` prop
+* `vue-stripe.success` Fires off if `on-success` is set to `broadcast`. Sends through the email and the token.
