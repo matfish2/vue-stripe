@@ -47,6 +47,14 @@
                 default: function() {
                     return {}
                 }
+            },
+            onSuccess:{
+                type: String,
+                required: false,
+                default: 'submit',
+                validator: function (value) {
+                    return (value === 'submit' || value === 'broadcast')
+                }
             }
         },
         data() {
@@ -141,7 +149,14 @@
                 self.stripeEmail = token.email;
 
                 Vue.nextTick(function() {
-                   document.querySelector('#vue-stripe').parentElement.submit();
+                    if(self.onSuccess === 'broadcast') {
+                        bus.$emit('vue-stripe.success', {
+                            token: self.stripeToken,
+                            email: self.stripeEmail
+                        });
+                    } else {
+                        document.querySelector('#vue-stripe').parentElement.submit();
+                    }
                })
 
             }
