@@ -151,3 +151,7 @@ bus.$on('vue-stripe.error', function(e) {
 * `vue-stripe.not-found` Fires off when the selected product was not found
 * `vue-stripe.error` Fires off when an invalid response was returned from the server using the `products-url` prop
 * `vue-stripe.success` Fires off if `on-success` is set to `broadcast`. Sends through the email and the token.
+
+## Development
+
+To build the project, run `$ webpack` from the terminal.
