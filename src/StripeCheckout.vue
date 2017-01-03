@@ -137,7 +137,7 @@
                         self.stripeToken = token.id;
                         self.stripeEmail = token.email;
 
-                        self.nextTick(function () {
+                        self.$nextTick(function () {
                             if (self.onSuccess === 'broadcast') {
                                 bus.$emit('vue-stripe.success', {
                                     token: self.stripeToken,
