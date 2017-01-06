@@ -1,5 +1,5 @@
 <template>
-    <div id="vue-stripe">
+    <div :id="formId">
         <input type="hidden" name="stripeToken" v-model="stripeToken">
         <input type="hidden" name="stripeEmail" v-model="stripeEmail">
 
@@ -19,6 +19,11 @@
 
     export default {
         props: {
+            formId: {
+                type: String,
+                required: false,
+                default: "vue-stripe"
+            },
             stripeKey: {
                 type: String,
                 required: true
@@ -104,9 +109,21 @@
                 let self = this;
                 let el = document.createElement('SCRIPT');
                 let ctr = 0;
+                let scriptSource = 'https://checkout.stripe.com/checkout.js';
+                let scripts = document.getElementsByTagName('script'); 
+                let scriptExists = false;
 
-                el.setAttribute('src', 'https://checkout.stripe.com/checkout.js');
-                document.querySelector("#vue-stripe").appendChild(el);
+                for (var i in scripts){
+                    if (scripts[i].src == scriptSource) {
+                        scriptExists = true;
+                    }
+                }
+
+                el.setAttribute('src', scriptSource);
+
+                if(!scriptExists) {
+                    document.querySelector("#"+this.formId).appendChild(el);
+                }
 
                 return new Promise((resolve, reject) => {
                     let handle = window.setInterval(function () {
@@ -143,7 +160,7 @@
                                     email: self.stripeEmail
                                 });
                             } else {
-                                document.querySelector('#vue-stripe').parentElement.submit();
+                                document.querySelector('#'+this.formId).parentElement.submit();
                             }
                         });
                     }
