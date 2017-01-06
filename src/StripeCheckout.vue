@@ -110,11 +110,18 @@
                 let el = document.createElement('SCRIPT');
                 let ctr = 0;
                 let scriptSource = 'https://checkout.stripe.com/checkout.js';
-                let scriptLength = $('script[src*="'+scriptSource+'"]').length; 
+                let scripts = document.getElementsByTagName('script'); 
+                let scriptExists = false;
+
+                for (var i in scripts){
+                    if (scripts[i].src == scriptSource) {
+                        scriptExists = true;
+                    }
+                }
 
                 el.setAttribute('src', scriptSource);
 
-                if(scriptLength === 0) {
+                if(!scriptExists) {
                     document.querySelector("#"+this.formId).appendChild(el);
                 }
 
