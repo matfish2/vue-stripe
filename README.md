@@ -18,25 +18,15 @@ Register the component:
 
 ```js
 Vue.component('stripe-checkout', StripeCheckout);
+```
 
-- or - 
+--- or ----
 
+```js
 new Vue({
     components: {
         'stripe-checkout': StripeCheckout
     }
-});
-``` 
-
-## Events
-
-If you want to listen to transaction events, require the event bus:
-
-```js
-import { Bus } from 'vue-stripe';
-
-Bus.$on('vue-stripe.success', payload => {
-    //
 });
 ```
 
@@ -86,7 +76,7 @@ Option A:
         <option value="2">Product B</option>
         <option value="3">Product C</option>
     </select>
-    
+
     <stripe-checkout
         stripe-key="my-stripe-key"
         :products="products"
@@ -131,7 +121,7 @@ Option B:
         <option value="2">Product B</option>
         <option value="3">Product C</option>
     </select>
-    
+
     <stripe-checkout
         stripe-key="my-stripe-key"
         products-url="/products"
@@ -145,7 +135,7 @@ Server side Example (Laravel)
 ```php
 Route::get('products', function() {
     $productId = request('productId');
-    
+
     return Product::find($productId);
 });
 ```
@@ -156,11 +146,13 @@ If you wish to handle submission by yourself set the `on-success` prop to `broad
 
 ## Events
 
-use the `bus` variable to listen for events. E.g
+Listen to events using the event bus:
 
 ```js
-bus.$on('vue-stripe.error', function(e) {
-    console.log(e)
+import { Bus } from 'vue-stripe';
+
+Bus.$on('vue-stripe.success', payload => {
+    //
 });
 ```
 
