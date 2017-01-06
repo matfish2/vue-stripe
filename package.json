@@ -1,6 +1,6 @@
 {
   "name": "vue-stripe",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Vue.js 2 Stripe checkout component",
   "keywords": [
     "vue",
@@ -9,7 +9,7 @@
   ],
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",

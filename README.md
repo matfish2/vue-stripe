@@ -1,10 +1,8 @@
 # Vue Stripe
 
-This package provides a convenient wrapper around stripe's [checkout component](https://stripe.com/checkout) for vue.js 2
+This package provides a convenient wrapper around Stripe's [checkout component](https://stripe.com/checkout) for vue.js 2
 
 ## Installation
-
-Compile the code using `browserify` + `vueify` or `webpack` + `vue-loader`
 
 ```js
 npm install vue-stripe
@@ -13,32 +11,47 @@ npm install vue-stripe
 Require the script:
 
 ```js
-import VueStripe from 'vue-stripe'
+import { StripeCheckout } from 'vue-stripe'
 ```
 
-Regsiter the component:
+Register the component:
 
 ```js
-Vue.use(VueStripe)
-```
+Vue.component('stripe-checkout', StripeCheckout);
 
-If you want to listen to events require the event bus:
+- or - 
+
+new Vue({
+    components: {
+        'stripe-checkout': StripeCheckout
+    }
+});
+``` 
+
+## Events
+
+If you want to listen to transaction events, require the event bus:
 
 ```js
-import bus from 'vue-stripe/bus'
+import { Bus } from 'vue-stripe';
+
+Bus.$on('vue-stripe.success', payload => {
+    //
+});
 ```
 
 ## Usage
 
-Embed the compnenet in your form as a direct HTML child.
+Embed the component in your form as a direct HTML child.
 
-If your are selling a single product this will do:
+If you are selling a single product this will do:
 
 ```html
 <form action="/process-payment" method="POST">
- <stripe-checkout
- stripe-key="my-stripe-key"
- product="product"></stripe-checkout>
+    <stripe-checkout
+        stripe-key="my-stripe-key"
+        product="product">
+    </stripe-checkout>
 </form>
 ```
 
@@ -46,9 +59,9 @@ The `product` object should match at least the bare minimum required by Stripe. 
 
 ```js
 {
-  name:'Moby Dick',
-  description:'I love whales',
-  amount:100000 // 100$ in cents
+    name: 'Moby Dick',
+    description: 'I love whales',
+    amount: 100000 // 100$ in cents
 }
 ```
 
@@ -68,59 +81,62 @@ Option A:
 
 ```html
 <form action="/process-payment" method="POST">
- <select v-model="productId">
-  <option value="1">Product A</option>
-  <option value="2">Product B</option>
-  <option value="3">Product C</option>
-</select>
-<stripe-checkout
-stripe-key="my-stripe-key"
-:products="products"
-:product-id="productId"></stripe-checkout>
+    <select v-model="productId">
+        <option value="1">Product A</option>
+        <option value="2">Product B</option>
+        <option value="3">Product C</option>
+    </select>
+    
+    <stripe-checkout
+        stripe-key="my-stripe-key"
+        :products="products"
+        :product-id="productId">
+    </stripe-checkout>
 </form>
 ```
 
 ```js
 {
-      data: {
+    data: {
         products:[
-          {
-          id:1,
-          name:'Product A',
-          description:'Product A Description',
-          amount:100000
-        },
-        {
-          id:2,
-          name:'Product B',
-          description:'Product B Description',
-          amount:50000
-        },
-        {
-           id:3,
-           name:'Product C',
-           description:'Product C Description',
-           amount:60000
-        }
-      ]
-  }
+            {
+                id:1,
+                name:'Product A',
+                description:'Product A Description',
+                amount:100000
+            },
+            {
+                id:2,
+                name:'Product B',
+                description:'Product B Description',
+                amount:50000
+            },
+            {
+                id:3,
+                name:'Product C',
+                description:'Product C Description',
+                amount:60000
+            }
+        ]
+    }
 }
 ```
-
 
 Option B:
 
 ```html
 <form action="/process-payment" method="POST">
- <select v-model="productId">
-  <option value="1">Product A</option>
-  <option value="2">Product B</option>
-  <option value="3">Product C</option>
-</select>
-<stripe-checkout
-stripe-key="my-stripe-key"
-products-url="/products"
-:productId="productId"></stripe-checkout>
+    <select v-model="productId">
+        <option value="1">Product A</option>
+        <option value="2">Product B</option>
+        <option value="3">Product C</option>
+    </select>
+    
+    <stripe-checkout
+        stripe-key="my-stripe-key"
+        products-url="/products"
+        :productId="productId">
+    </stripe-checkout>
 </form>
 ```
 
@@ -128,9 +144,9 @@ Server side Example (Laravel)
 
 ```php
 Route::get('products', function() {
-  $productId = request('productId');
-
-  return Product::find($productId);
+    $productId = request('productId');
+    
+    return Product::find($productId);
 });
 ```
 
@@ -144,7 +160,7 @@ use the `bus` variable to listen for events. E.g
 
 ```js
 bus.$on('vue-stripe.error', function(e) {
-  console.log(e)
+    console.log(e)
 });
 ```
 
@@ -154,4 +170,8 @@ bus.$on('vue-stripe.error', function(e) {
 
 ## Development
 
-To build the project, run `$ webpack` from the terminal.
+To build the project:
+
+```
+npm run build
+```

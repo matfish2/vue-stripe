@@ -1,6 +1,9 @@
-import Vue from 'vue';
 import StripeCheckout from './StripeCheckout.vue';
+import Bus from './bus';
 
-exports.install = Vue => {
-    Vue.component('stripe-checkout', StripeCheckout);
-}
+const VueStripe = {
+    Bus,
+    StripeCheckout
+};
+
+module.exports = VueStripe;
