@@ -78,7 +78,9 @@
                     .catch(e => console.error(e));
 
             window.addEventListener('popstate', function () {
-                this.stripe.close();
+                if (typeof this.stripe !== 'undefined') {
+                    this.stripe.close();
+                }
             });
         },
         methods: {
