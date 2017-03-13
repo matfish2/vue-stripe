@@ -1,9 +1,7 @@
 import StripeCheckout from './StripeCheckout.vue';
 import Bus from './bus';
 
-const VueStripe = {
+export default {
     Bus,
     StripeCheckout
 };
-
-module.exports = VueStripe;

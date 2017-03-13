@@ -14,8 +14,7 @@
 <script>
     import merge from 'merge'
     import bus from './bus'
-
-    require('es6-promise/auto');
+    import 'es6-promise/auto';
 
     export default {
         props: {
@@ -112,7 +111,7 @@
                 let el = document.createElement('SCRIPT');
                 let ctr = 0;
                 let scriptSource = 'https://checkout.stripe.com/checkout.js';
-                let scripts = document.getElementsByTagName('script'); 
+                let scripts = document.getElementsByTagName('script');
                 let scriptExists = false;
 
                 for (var i in scripts){
