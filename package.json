@@ -1,13 +1,13 @@
 {
   "name": "vue-stripe",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Vue.js 2 Stripe checkout component",
   "keywords": [
     "vue",
     "stripe",
     "checkout"
   ],
-  "main": "src/index.js",
+  "main": "compiled/index.js",
   "scripts": {
     "build": "webpack",
     "install": "webpack"
@@ -29,6 +29,6 @@
     "babel-preset-es2015": "^6.18.0",
     "vue-loader": "^10.0.2",
     "vue-template-compiler": "^2.1.8",
-    "webpack": "^1.14.0"
+    "webpack": "^2.0"
   }
 }

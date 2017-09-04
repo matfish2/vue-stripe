@@ -1,7 +1,6 @@
-import StripeCheckout from './StripeCheckout.vue';
-import Bus from './bus';
+import checkout from './StripeCheckout.vue';
+import bus from './bus';
 
-export default {
-    Bus,
-    StripeCheckout
-};
+export const StripeCheckout = checkout;
+export const Bus = bus;
+
