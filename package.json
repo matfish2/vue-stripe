@@ -1,6 +1,6 @@
 {
   "name": "vue-stripe",
-  "version": "0.1.4",
+  "version": "0.1.41",
   "description": "Vue.js 2 Stripe checkout component",
   "keywords": [
     "vue",
