@@ -33,7 +33,7 @@ module.exports = {
             sourceMap: false,
             mangle: true,
             compress: {
-                warnings: false
+                warnings: true
             }
         })
     ]

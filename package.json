@@ -20,13 +20,13 @@
   "dependencies": {
     "es6-promise": "^4.0.5",
     "merge": "^1.2.0",
-    "vue": "^2.0.3"
+    "vue": "^2"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.18.0",
-    "vue-loader": "^10.0.2",
+    "vue-loader": "^13",
     "vue-template-compiler": "^2.1.8",
     "webpack": "^2.0"
   }
