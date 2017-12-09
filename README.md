@@ -60,6 +60,7 @@ Additional props:
 *  `options` Additional options to be merged into the main configuration object (e.g `zipCode:true`)
 *  `button` Button text. Default: 'Purchase'
 *  `formId` Set the id for the div containing the form, allows for multiple components per page
+* `button-class` HTML `class` attribute for the button. Default: `btn btn-primary`
 *  `on-success` How to proceed once the checkout form was submitted.
 Defaults to `submit`, which submits the main form. Set to `broadcast` to handle submission by yourself.
 

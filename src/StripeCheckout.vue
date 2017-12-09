@@ -4,7 +4,7 @@
         <input type="hidden" name="stripeEmail" v-model="stripeEmail">
 
         <button @click.prevent="purchase()"
-                class="btn btn-primary btn-stripe-checkout"
+                :class="btnClass"
                 :disabled="!loaded">
             {{ button }}
         </button>
@@ -50,6 +50,11 @@
                     return {}
                 }
             },
+            buttonClass: { 
+                type: String, 
+                require: false, 
+                default: 'btn btn-primary' 
+            },
             onSuccess: {
                 type: String,
                 required: false,
@@ -81,6 +86,11 @@
                     this.stripe.close();
                 }
             });
+        },
+        computed: {
+            btnClass() {
+                return this.buttonClass + ' btn-stripe-checkout'; 
+            }
         },
         methods: {
             selectedProduct()  {
