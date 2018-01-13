@@ -168,7 +168,8 @@
                             if (self.onSuccess === 'broadcast') {
                                 bus.$emit('vue-stripe.success', {
                                     token: self.stripeToken,
-                                    email: self.stripeEmail
+                                    email: self.stripeEmail,
+                                    formId: this.formId
                                 });
                             } else {
                                 document.querySelector('#'+this.formId).parentElement.submit();
