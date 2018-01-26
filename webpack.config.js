@@ -35,6 +35,11 @@ module.exports = {
             compress: {
                 warnings: true
             }
-        })
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"production"'
+            }
+        }),
     ]
 };
